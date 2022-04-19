@@ -15,7 +15,8 @@ import co.ke.Model.UserModel;
 public interface UserService {
 
 	Users saveUser(UserModel userModel);
-	Users findByadmissionNo(String admissionNo);
+//	Users findByadmissionNo(String admissionNo);
+	boolean existsByAdmissionNo(String admissionNo);
 	Users findByEmail(String email);
 
 //	Users updateUser(UserModel userModel);

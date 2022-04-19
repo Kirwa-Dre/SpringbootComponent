@@ -35,9 +35,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Users findByadmissionNo(String admissionNo) {
-		return userRepository.findByAdmissionNo(admissionNo);
+	public boolean existsByAdmissionNo(String admissionNo) {
+		 boolean exists;
+		return (userRepository.existsByAdmissionNo(admissionNo));
+
 	}
+
+//	@Override
+//	public Users findByadmissionNo(String admissionNo) {
+//		return userRepository.findByAdmissionNo(admissionNo);
+//	}
 
 	@Override
 	public Users findByEmail(String email) {
