@@ -3,13 +3,12 @@
  */
 package co.ke.Entities;
 
-import java.io.Serializable;
-
-import javax.persistence.*;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @author kirwa
@@ -24,17 +23,25 @@ public class Users implements Serializable{
 	
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "userId")
+	@SequenceGenerator(
+			name = "idSequence",
+			sequenceName = "idSequence",
+			allocationSize = 1
+	)
+	@GeneratedValue(
+			strategy = GenerationType.SEQUENCE,
+			generator = "idSequence"
+	)
+	@Column(name = "userId",updatable = false,nullable = false)
 	private Long userId;
 	
-	@Column(name = "admissionNo")
+	@Column(name = "admissionNo", unique = true,updatable = false,nullable = false,columnDefinition = "TEXT")
 	private String admissionNo;
 	
-	@Column(name = "name")
+	@Column(name = "name",nullable = false)
 	private String name;
 	
-	@Column(name = "email")
+	@Column(name = "email",unique = true,updatable = false)
 	private String email;
 	
 	@Column(name = "password")

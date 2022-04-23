@@ -3,7 +3,9 @@
  */
 package co.ke.Services;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,47 +38,29 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean existsByAdmissionNo(String admissionNo) {
-		 boolean exists;
 		return (userRepository.existsByAdmissionNo(admissionNo));
-
 	}
-
-//	@Override
-//	public Users findByadmissionNo(String admissionNo) {
-//		return userRepository.findByAdmissionNo(admissionNo);
-//	}
 
 	@Override
 	public Users findByEmail(String email) {
 		return userRepository.findUserByEmail(email);
 	}
 
-//	@Override
-//	public Users updateUser(UserModel userModel) {
-//
-//		return null;
-//	}
-//
-//	@Override
-//	public Users deleteUser(Long userId) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
+	@Override
+	public String getPassword(Long id) {
+		return userRepository.confirmPassword(id);
+	}
 
-//
-//	@Override
-//	public List<Users> getAllUser() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public Long findByUserId(Long userId) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-	
-	
+	@Override
+	public Long getUserId(String admissionNo) {
+		return userRepository.findIdByAdmissionNo(admissionNo);
+	}
+
+	@Override
+	public List<Users> findAll() {
+//		List<Users> users = new HashSet<>();
+		return userRepository.findAll();
+	}
+
 
 }
